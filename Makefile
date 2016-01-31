@@ -5,7 +5,7 @@
 # the 'm' in obj-m means that foo.o shall be built as a module in kernel
 # m - module
 # y - yes ( built-in to kernel )
-obj-m += chardev.o
+obj-m += led2.o
  
 # CC is a variable to specify the compiler to be used. By default it would be cc, but as we are cross-compiling
 # we should specify another compiler for that. Therefore we can redefine it to take $CROSS_COMPILE variable into account which
