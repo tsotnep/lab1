@@ -24,6 +24,9 @@ static bool swState = 0;
 static char ledName[7] = "myled";
 static unsigned int period = 1000; // blink period in ms
  
+module_param(gpioLED, int, S_IRUGO);
+module_param(gpioSW, int, S_IRUGO);
+
 enum modes { OFF, ON, BLINK };      // enum for LED modes
 static enum modes mode = ON;        // default mode off
  
