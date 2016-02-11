@@ -5,3 +5,4 @@ all:
 	$(CC) test.c -o test
 clean: 
 	make -C ../linux-digilent/ M=$(PWD) clean
+	rm test
