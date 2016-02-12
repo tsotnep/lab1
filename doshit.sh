@@ -29,11 +29,13 @@ else
 fi
 
 ###### create makefile
+make clean
 echo obj-m += $FILENAME.o > Makefile
 echo CC='$(CROSS_COMPILE)'gcc >> Makefile
 echo -e all: '\n\t'make -C ../linux-digilent/ M='$(PWD)' modules >> Makefile
 echo -e '\t''$(CC)' test.c -o test >> Makefile
 echo -e clean: '\n\t'make -C ../linux-digilent/ M='$(PWD)' clean >> Makefile
+echo -e '\t'rm test >> Makefile
 
 
 ##### buld shits
@@ -42,7 +44,14 @@ make ARCH=arm CROSS_COMPILE=arm-xilinx-linux-gnueabi-
 #### check if sd card is mounted
 while [ ! -d $SDCARD ]
 do
-    read -p  "SD card not mounted, insert SD card into PC and press Enter!"
+    echo  -e "\t SD card not mounted, insert SD card into PC and press Enter!"
+	read -r -p "\t if you want to skip this part enter: y " response
+	response=${response,,}    # tolower
+	if [[ $response =~ ^(yes|y)$ ]]
+	then
+		break;
+	fi
+
 done
 
 ##### copy to sd card

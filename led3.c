@@ -176,6 +176,7 @@ static void __exit gpio_exit(void) {
  
 static irq_handler_t gpio_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs) {
     swState = gpio_get_value(gpioSW); // invert led state
+    printk(KERN_INFO "Whoaaa!! interrupt happened\n");
     return (irq_handler_t) IRQ_HANDLED; // announce that the IRQ has been handled correctly
 }
 module_init(gpio_init);

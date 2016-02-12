@@ -1,4 +1,4 @@
-obj-m += led2.o
+obj-m += led3.o
 CC=$(CROSS_COMPILE)gcc
 all: 
 	make -C ../linux-digilent/ M=$(PWD) modules
